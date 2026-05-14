@@ -29,7 +29,10 @@ router.patch(
   policyController.updatePolicyStatus
 );
 
-router.get('/', authorizeRoles(ROLES.EMPLOYEE), policyController.getApprovedPolicies);
+router.get(
+  '/',
+  authorizeRoles(ROLES.EMPLOYEE, ROLES.HR, ROLES.MANAGER),
+  policyController.getApprovedPolicies
+);
 
 module.exports = router;
-
